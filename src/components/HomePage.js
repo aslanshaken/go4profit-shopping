@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import './HomePage.css';
 
-function HomePage({ addToCart, cartCount, goToCheckout }) {
+function HomePage({ addToCart, cartCount }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [notification, setNotification] = useState('');
 
@@ -33,12 +34,12 @@ function HomePage({ addToCart, cartCount, goToCheckout }) {
             <h1>Go4Profit</h1>
             <p>Quality Merchandise</p>
           </div>
-          <button className="cart-btn" onClick={goToCheckout}>
+          <Link to="/checkout" className="cart-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M9 2L7 6H3L7 20H17L21 6H17L15 2H9Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Cart {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -84,7 +85,29 @@ function HomePage({ addToCart, cartCount, goToCheckout }) {
       </div>
 
       <footer className="footer">
-        <p>&copy; 2025 Go4Profit. Professional Bookkeeping Services.</p>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Go4Profit</h3>
+            <p>Professional Bookkeeping Services</p>
+            <p>Quality Merchandise for Your Team</p>
+          </div>
+          <div className="footer-section">
+            <h4>Quick Links</h4>
+            <ul className="footer-links">
+              <li><Link to="/support">Customer Support</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms of Service</Link></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Contact Us</h4>
+            <p>Email: hello@go4profit.us</p>
+            <p>Hours: Mon-Fri, 9AM-5PM EST</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 Go4Profit. All Rights Reserved.</p>
+        </div>
       </footer>
     </div>
   );

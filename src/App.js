@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import HomePage from './components/HomePage';
 import CheckoutPage from './components/CheckoutPage';
+import SupportPage from './components/SupportPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [currentPage, setCurrentPage] = useState('home');
 
   const addToCart = (product) => {
     const existingItem = cart.find(item => item.id === product.id);
@@ -46,24 +49,45 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {currentPage === 'home' ? (
-        <HomePage
-          addToCart={addToCart}
-          cart={cart}
-          cartCount={getTotalItems()}
-          goToCheckout={() => setCurrentPage('checkout')}
-        />
-      ) : (
-        <CheckoutPage
-          cart={cart}
-          updateQuantity={updateQuantity}
-          removeFromCart={removeFromCart}
-          getTotalPrice={getTotalPrice}
-          goBack={() => setCurrentPage('home')}
-        />
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                addToCart={addToCart}
+                cart={cart}
+                cartCount={getTotalItems()}
+              />
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <CheckoutPage
+                cart={cart}
+                updateQuantity={updateQuantity}
+                removeFromCart={removeFromCart}
+                getTotalPrice={getTotalPrice}
+              />
+            }
+          />
+          <Route
+            path="/support"
+            element={<SupportPage />}
+          />
+          <Route
+            path="/privacy"
+            element={<PrivacyPolicy />}
+          />
+          <Route
+            path="/terms"
+            element={<TermsOfService />}
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

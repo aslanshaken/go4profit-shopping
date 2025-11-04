@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './CheckoutPage.css';
 
 const SHIPPING_FEE = 15.00;
 
-function CheckoutPage({ cart, updateQuantity, removeFromCart, getTotalPrice, goBack }) {
+function CheckoutPage({ cart, updateQuantity, removeFromCart, getTotalPrice }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -53,14 +55,14 @@ function CheckoutPage({ cart, updateQuantity, removeFromCart, getTotalPrice, goB
     return (
       <div className="checkout-page">
         <header className="checkout-header">
-          <button className="back-btn" onClick={goBack}>
+          <Link to="/" className="back-btn">
             ← Back to Shop
-          </button>
+          </Link>
           <h1>Checkout</h1>
         </header>
         <div className="empty-cart">
           <h2>Your cart is empty</h2>
-          <button className="continue-btn" onClick={goBack}>Continue Shopping</button>
+          <Link to="/" className="continue-btn">Continue Shopping</Link>
         </div>
       </div>
     );
@@ -69,9 +71,9 @@ function CheckoutPage({ cart, updateQuantity, removeFromCart, getTotalPrice, goB
   return (
     <div className="checkout-page">
       <header className="checkout-header">
-        <button className="back-btn" onClick={goBack}>
+        <Link to="/" className="back-btn">
           ← Back to Shop
-        </button>
+        </Link>
         <h1>Checkout</h1>
       </header>
 

@@ -53,6 +53,7 @@
   gap: 0.5rem;
   position: relative;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .cart-btn:hover {
@@ -232,9 +233,67 @@
 .footer {
   background: #1a1a2e;
   color: white;
-  text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem 1rem 2rem;
   margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00d4ff;
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #00d4ff;
+}
+
+.footer-section p {
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #aaa;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #00d4ff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+  text-align: center;
+  color: #aaa;
 }
 
 @media (max-width: 768px) {
@@ -245,5 +304,10 @@
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
